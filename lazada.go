@@ -18,7 +18,26 @@ import (
 	"github.com/pkg/errors"
 )
 
+const (
+	// Version lazada api latest updated
+	Version = "lazop-sdk-go-20200515"
+
+	// APIGatewaySG endpoint
+	APIGatewaySG = "https://api.lazada.sg/rest"
+	// APIGatewayMY endpoint
+	APIGatewayMY = "https://api.lazada.com.my/rest"
+	// APIGatewayVN endpoint
+	APIGatewayVN = "https://api.lazada.vn/rest"
+	// APIGatewayTH endpoint
+	APIGatewayTH = "https://api.lazada.co.th/rest"
+	// APIGatewayPH endpoint
+	APIGatewayPH = "https://api.lazada.com.ph/rest"
+	// APIGatewayID endpoint
+	APIGatewayID = "https://api.lazada.co.id/rest"
+)
+
 type Client struct {
+	region      string
 	baseURL     string
 	authURL     string
 	callbackURL string
@@ -29,16 +48,39 @@ type Client struct {
 }
 
 // NewClient creates Client instance
-func NewClient(appKey, appSecret string) *Client {
-	return &Client{
-		baseURL:     "https://api.lazada.vn/rest",
+func NewClient(appKey, appSecret string,Region string) *Client {
+	client := &Client{
 		authURL:     "https://auth.lazada.com/oauth/authorize",
 		callbackURL: "https://4vn.app/lazada/authorized",
 		appKey:      appKey,
 		appSecret:   appSecret,
 		accessToken: "",
+		region:      Region,
 	}
+	baseUrl := client.getServerURL()
+	client.baseURL = baseUrl
+	return client
 }
+
+func (me *Client) getServerURL() string {
+	switch me.region {
+	case "SG":
+		return APIGatewaySG
+	case "MY":
+		return APIGatewayMY
+	case "VN":
+		return APIGatewayVN
+	case "TH":
+		return APIGatewayTH
+	case "PH":
+		return APIGatewayPH
+	case "ID":
+		return APIGatewayID
+	}
+	return APIGatewayTH
+}
+
+
 func (me *Client) SetCallbackUrl(url string) {
 	me.callbackURL = url	
 }
