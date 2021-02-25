@@ -39,7 +39,9 @@ func NewClient(appKey, appSecret string) *Client {
 		accessToken: "",
 	}
 }
-
+func (me *Client) SetCallbackUrl(url string) {
+	me.callbackURL = url	
+}
 func (me *Client) SetAccessToken(token string) {
 	me.accessToken = token
 }
