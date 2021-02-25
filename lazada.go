@@ -136,7 +136,7 @@ func (me *Client) MakeAuthURL() string {
 	params := neturl.Values{}
 	params.Add("response_type", "code")
 	params.Add("force_auth", "true")
-	params.Add("country", "vn")
+	params.Add("country", me.region)
 	params.Add("redirect_uri", me.callbackURL)
 	params.Add("client_id", me.appKey)
 	return me.authURL + `?` + params.Encode()
