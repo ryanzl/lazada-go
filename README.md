@@ -5,7 +5,7 @@ Lazada library in go
 ### Import
 
 ``` go
-import "github.com/4vn/lazada-go"
+import "github.com/ryanzl/lazada-go"
 ```
 
 ### Usage
