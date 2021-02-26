@@ -520,6 +520,27 @@ func (me *Client) GetSeller() (*Seller, error) {
 	return res.GetData(), nil
 }
 
+func (me *Client) GetDocument(req *GetDocumentRequest) (*GetDocumentResponse, error) {
+	b, _ := json.Marshal(req)
+	params := make(map[string]string)
+	json.Unmarshal(b, &params)
+
+	path := "/order/document/get"
+	qs := me.buildQuery("GET", path, params)
+	body, err := me.get(me.baseURL + path + "?" + qs)
+	if err != nil {
+		return nil, errors.Wrap(err, "")
+	}
+
+	res := &GetDocumentResponse{}
+	err = json.Unmarshal([]byte(body), res)
+	if err != nil {
+		return nil, errors.Wrap(err, "")
+	}
+
+	return res, nil
+}
+
 func (me *Client) buildQuery(method, api string, params map[string]string) string {
 	common := make(map[string]string)
 	common["app_key"] = me.appKey
