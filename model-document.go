@@ -7,11 +7,13 @@ type GetDocumentRequest struct {
 
 type GetDocumentResponse struct {
 	Code                 string   `json:"code,omitempty"`
-	Data                 *GetDocument  `json:"data,omitempty"`
+	Data                 *GetDocumentData  `json:"data,omitempty"`
 	RequestId            string   `json:"request_id,omitempty"`
 }
-
+type GetDocumentData struct {
+	Document                GetDocument   `json:"document,omitempty"`
+}
 type GetDocument struct {
-	File                string   `json:"fileC,omitempty"`
+	File                string   `json:"file,omitempty"`
 	MimeType   string   `json:"mime_type,omitempty"`
 }
