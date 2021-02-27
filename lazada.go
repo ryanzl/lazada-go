@@ -427,7 +427,7 @@ func (me *Client) GetOrder(req *GetOrderRequest) (*GetOrderResponse, error) {
 	return res, nil
 }
 
-func (me *Client) GetMultipleOrderItems(orderIds []int64) (*GetMultipleOrderItemsResponse, error) {
+func (me *Client) GetMultipleOrderItems(orderIds []int64) (*GetMultiOrderItemsResponse, error) {
 	params := map[string]string{"order_ids": jsonify(orderIds)}
 	path := "/orders/items/get"
 	qs := me.buildQuery("GET", path, params)
@@ -436,7 +436,7 @@ func (me *Client) GetMultipleOrderItems(orderIds []int64) (*GetMultipleOrderItem
 		return nil, errors.Wrap(err, "")
 	}
 
-	res := &GetMultipleOrderItemsResponse{}
+	res := &GetMultiOrderItemsResponse{}
 	if err := json.Unmarshal([]byte(body), res); err != nil {
 		return nil, errors.Wrap(err, "")
 	}
