@@ -7,6 +7,6 @@ type GetMultiOrderItemsResponse struct {
 }
 type GetMultiOrderItemsResponseData struct {
 	OrderNumber          int64       `json:"order_number,omitempty"`
-	OrderId              string       `json:"order_id,omitempty"`
+	OrderId              int64       `json:"order_id,omitempty"`
 	OrderItems           []*OrderItem `json:"order_items,omitempty"`
 }
