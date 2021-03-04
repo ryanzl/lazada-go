@@ -20,3 +20,25 @@ type DataMoatLoginResult struct {
 	Msg          	string `json:"msg,omitempty"`
 	Success       	bool `json:"success,omitempty"`
 }
+
+type DataMoatComputeRiskReq struct {
+	Time          	string `json:"time,omitempty"`
+	AppName       	string `json:"appName,omitempty"`
+	UserId      	string `json:"userId,omitempty"`
+	UserIp	      	string `json:"userIp,omitempty"`
+	Ati	      		string `json:"ati,omitempty"`
+}
+
+type DataMoatComputeRiskResp struct {
+	Code                 string   `json:"code,omitempty"`
+	RequestId            string   `json:"request_id,omitempty"`
+	Result   DataMoatComputeRiskResult `json:"result,omitempty"`
+}
+type DataMoatComputeRiskResult struct {
+	Msg          		string `json:"msg,omitempty"`
+	Success       		bool `json:"success,omitempty"`
+	Risk       			string `json:"risk,omitempty"`
+	RiskType       		string `json:"riskType,omitempty"`
+	RiskDescription     string `json:"riskDescription,omitempty"`
+
+}
