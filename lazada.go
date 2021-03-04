@@ -21,7 +21,8 @@ import (
 const (
 	// Version lazada api latest updated
 	Version = "lazop-sdk-go-20200515"
-
+	// APIGateway For All Region
+	APIGatewayAll = "https://api.lazada.com/rest"
 	// APIGatewaySG endpoint
 	APIGatewaySG = "https://api.lazada.sg/rest"
 	// APIGatewayMY endpoint
@@ -64,6 +65,8 @@ func NewClient(appKey, appSecret string,Region string) *Client {
 
 func (me *Client) getServerURL() string {
 	switch me.region {
+	case "ALL":
+		return APIGatewayAll
 	case "SG":
 		return APIGatewaySG
 	case "MY":
@@ -540,6 +543,31 @@ func (me *Client) GetDocument(req *GetDocumentRequest) (*GetDocumentResponse, er
 
 	return res, nil
 }
+
+/**
+此API用于访问敏感数据访问过程中需要的DataMoat帐户安全服务。
+ */
+func (me *Client) DatamoatLogin(req *DataMoatLoginReq) (*DataMoatLoginResp, error) {
+	b, _ := json.Marshal(req)
+	params := make(map[string]string)
+	json.Unmarshal(b, &params)
+
+	path := "/datamoat/login"
+	qs := me.buildQuery("GET", path, params)
+	body, err := me.get(me.baseURL + path + "?" + qs)
+	if err != nil {
+		return nil, errors.Wrap(err, "")
+	}
+
+	res := &DataMoatLoginResp{}
+	err = json.Unmarshal([]byte(body), res)
+	if err != nil {
+		return nil, errors.Wrap(err, "")
+	}
+
+	return res, nil
+}
+
 
 func (me *Client) buildQuery(method, api string, params map[string]string) string {
 	common := make(map[string]string)
