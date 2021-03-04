@@ -4,7 +4,7 @@ type DataMoatLoginReq struct {
 	Time          	string `json:"time,omitempty"`
 	AppName       	string `json:"appName,omitempty"`
 	UserId      	string `json:"userId,omitempty"`
-	Tid	     		string `json:"userId,omitempty"`
+	Tid	     		string `json:"tid,omitempty"`
 	UserIp	      	string `json:"userIp,omitempty"`
 	Ati	      		string `json:"ati,omitempty"`
 	LoginResult	    string `json:"loginResult,omitempty"`
