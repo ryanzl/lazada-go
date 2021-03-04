@@ -37,7 +37,7 @@ type DataMoatComputeRiskResp struct {
 type DataMoatComputeRiskResult struct {
 	Msg          		string `json:"msg,omitempty"`
 	Success       		bool `json:"success,omitempty"`
-	Risk       			string `json:"risk,omitempty"`
+	Risk       			float64 `json:"risk,omitempty"`
 	RiskType       		string `json:"riskType,omitempty"`
 	RiskDescription     string `json:"riskDescription,omitempty"`
 
