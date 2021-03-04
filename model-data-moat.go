@@ -18,5 +18,5 @@ type DataMoatLoginResp struct {
 }
 type DataMoatLoginResult struct {
 	Msg          	string `json:"msg,omitempty"`
-	Success       	string `json:"Success,omitempty"`
+	Success       	bool `json:"success,omitempty"`
 }
