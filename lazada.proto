@@ -190,7 +190,7 @@ message OrderItem {
 	string sla_time_stamp = 17;
 	string sku = 18;
 	string voucher_code = 19;
-	string wallet_credits = 20; // float
+	float wallet_credits = 20; // float
 	string updated_at = 21;
 	int64 is_digital = 22;
 	string tracking_code_pre = 23;
