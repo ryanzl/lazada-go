@@ -566,7 +566,7 @@ func (me *Client) DatamoatLogin(req *DataMoatLoginReq) (*DataMoatLoginResp, erro
 	}
 
 	return res, nil
-}
+} 
 
 /**
 此API用于访问敏感数据访问过程中需要的DataMoat帐户安全服务。
