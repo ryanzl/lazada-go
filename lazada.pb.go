@@ -1445,7 +1445,7 @@ type OrderItem struct {
 	SlaTimeStamp          string   `protobuf:"bytes,17,opt,name=sla_time_stamp,json=slaTimeStamp,proto3" json:"sla_time_stamp,omitempty"`
 	Sku                   string   `protobuf:"bytes,18,opt,name=sku,proto3" json:"sku,omitempty"`
 	VoucherCode           string   `protobuf:"bytes,19,opt,name=voucher_code,json=voucherCode,proto3" json:"voucher_code,omitempty"`
-	WalletCredits         string   `protobuf:"bytes,20,opt,name=wallet_credits,json=walletCredits,proto3" json:"wallet_credits,omitempty"`
+	WalletCredits         float32   `protobuf:"fixed32,20,opt,name=wallet_credits,json=walletCredits,proto3" json:"wallet_credits,omitempty"`
 	UpdatedAt             string   `protobuf:"bytes,21,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	IsDigital             int64    `protobuf:"varint,22,opt,name=is_digital,json=isDigital,proto3" json:"is_digital,omitempty"`
 	TrackingCodePre       string   `protobuf:"bytes,23,opt,name=tracking_code_pre,json=trackingCodePre,proto3" json:"tracking_code_pre,omitempty"`
@@ -1627,7 +1627,7 @@ func (m *OrderItem) GetVoucherCode() string {
 	return ""
 }
 
-func (m *OrderItem) GetWalletCredits() string {
+func (m *OrderItem) GetWalletCredits() float32 {
 	if m != nil {
 		return m.WalletCredits
 	}
